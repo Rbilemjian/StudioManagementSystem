@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class PaymentGroup extends Model
 {
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'monthly_payment'
     ];
 }
