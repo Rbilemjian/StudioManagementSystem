@@ -36,4 +36,10 @@ class PaymentYearService implements PaymentYearInterface
         $paymentYear->save();
     }
 
+    public function deletePaymentYear(int $id)
+    {
+        $paymentYear = PaymentYear::find($id);
+        $paymentYear->delete();
+    }
+
 }

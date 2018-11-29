@@ -27,3 +27,4 @@ Route::group([
 
 Route::get('/paymentyears', 'PaymentYearController@getAllPaymentYears');
 Route::post('/createpaymentyear', 'PaymentYearController@createPaymentYear');
+Route::post('/deletepaymentyear', 'PaymentYearController@deletePaymentYear');

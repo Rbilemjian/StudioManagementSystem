@@ -42,4 +42,10 @@ class PaymentYearController extends Controller
         $this->pyi->createPaymentYear($paymentYear);
     }
 
+    public function deletePaymentYear(Request $request)
+    {
+        $id = $request->id;
+        $this->pyi->deletePaymentYear($id);
+    }
+
 }
