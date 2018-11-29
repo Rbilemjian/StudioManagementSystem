@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/paymentyears', 'PaymentYearController@getAllPayments');
 Route::get('/payments', 'PaymentsController@getAllPayments');

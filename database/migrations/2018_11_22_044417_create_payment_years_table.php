@@ -15,21 +15,21 @@ class CreatePaymentYearsTable extends Migration
     {
         Schema::create('payment_years', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('payment_group_id');
-            $table->foreign('payment_group_id')->references('id')->on('payment_group');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('user');
             $table->smallInteger('year');
-            $table->integer('jan');
-            $table->integer('feb');
-            $table->integer('mar');
-            $table->integer('apr');
-            $table->integer('may');
-            $table->integer('jun');
-            $table->integer('jul');
-            $table->integer('aug');
-            $table->integer('sep');
-            $table->integer('oct');
-            $table->integer('nov');
-            $table->integer('dec');
+            $table->integer('January')->nullable();
+            $table->integer('February')->nullable();
+            $table->integer('March')->nullable();
+            $table->integer('April')->nullable();
+            $table->integer('May')->nullable();
+            $table->integer('June')->nullable();
+            $table->integer('July')->nullable();
+            $table->integer('August')->nullable();
+            $table->integer('September')->nullable();
+            $table->integer('October')->nullable();
+            $table->integer('November')->nullable();
+            $table->integer('December')->nullable();
             $table->timestamps();
         });
     }

@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //My Service Providers
-        App\Providers\PaymentServiceProvider::class,
+        App\Providers\PaymentYearServiceProvider::class,
 
     ],
 

@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class PaymentServiceProvider extends ServiceProvider
+class PaymentYearServiceProvider extends ServiceProvider
 {
 
     /**
@@ -15,8 +15,8 @@ class PaymentServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'App\Interfaces\PaymentInterface',
-            'App\Services\PaymentService'
+            'App\Interfaces\PaymentYearInterface',
+            'App\Services\PaymentYearService'
         );
     }
 }
