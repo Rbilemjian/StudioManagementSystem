@@ -24,3 +24,6 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::post('self', 'AuthController@self');
 });
+
+Route::get('/paymentyears', 'PaymentYearController@getAllPaymentYears');
+Route::post('/createpaymentyear', 'PaymentYearController@createPaymentYear');

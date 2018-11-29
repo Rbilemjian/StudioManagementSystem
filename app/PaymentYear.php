@@ -20,5 +20,7 @@ class PaymentYear extends Model
         'October',
         'November',
         'December',
+        'student',
+        'teacher',
     ];
 }
