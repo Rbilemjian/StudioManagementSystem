@@ -15,7 +15,8 @@ class PaymentYearSeeder extends Seeder
            'year' => 2018,
            'January' => 70,
            'February' => 70,
-           'user_id' => 1,
+           'student' => 'studiostudent',
+           'teacher' => 'studioteacher',
         ]);
     }
 }

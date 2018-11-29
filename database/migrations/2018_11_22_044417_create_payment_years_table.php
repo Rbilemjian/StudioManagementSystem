@@ -15,8 +15,8 @@ class CreatePaymentYearsTable extends Migration
     {
         Schema::create('payment_years', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->string('student');
+            $table->string('teacher');
             $table->smallInteger('year');
             $table->integer('January')->nullable();
             $table->integer('February')->nullable();
