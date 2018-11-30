@@ -25,6 +25,6 @@ Route::group([
     Route::post('self', 'AuthController@self');
 });
 
-Route::get('/paymentyears', 'PaymentYearController@getAllPaymentYears');
-Route::post('/createpaymentyear', 'PaymentYearController@createPaymentYear');
-Route::post('/deletepaymentyear', 'PaymentYearController@deletePaymentYear');
+Route::get('/payments', 'PaymentController@getAllPayments');
+Route::post('/createpayment', 'PaymentController@createPayment');
+Route::post('/deletepayment', 'PaymentController@deletePayment');
