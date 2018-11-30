@@ -26,5 +26,6 @@ Route::group([
 });
 
 Route::get('/payments', 'PaymentController@getAllPayments');
+Route::get('/comments', 'CommentController@getAllComments');
 Route::post('/createpayment', 'PaymentController@createPayment');
 Route::post('/deletepayment', 'PaymentController@deletePayment');
