@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Interfaces\PaymentInterface;
+use App\Interfaces\CommentInterface;
 
 use Illuminate\Http\Request;
 
@@ -17,6 +18,12 @@ class PaymentController extends Controller
     public function getAllPayments()
     {
         return $this->pyi->getAllPayments();
+    }
+
+    public function getComments(Request $request)
+    {
+        $payment = $request->payment;
+
     }
 
     public function createPayment(Request $request)
