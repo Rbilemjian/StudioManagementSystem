@@ -29,6 +29,7 @@ class PaymentService implements PaymentInterface
         $date = \Carbon\Carbon::now()->toDateString();
         $payment = new Payment([
             'amount' => $arr['amount'],
+            'notes' => $arr['notes'],
             'teacher' => $arr['teacher'],
             'student' => $arr['student'],
             'date' => $date
@@ -40,6 +41,7 @@ class PaymentService implements PaymentInterface
     {
         $payment = Payment::find($edits['id']);
         $payment->amount = $edits['amount'];
+        $payment->notes = $edits['notes'];
         $payment->save();
     }
 

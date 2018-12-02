@@ -18,6 +18,7 @@ class PaymentSeeder extends Seeder
            'date' => $date,
            'student' => 'studiostudent',
            'teacher' => 'studioteacher',
+           'notes' => 'This is a payment for monthly tuition in the month of December',
            'created_at' => $timestamp,
            'updated_at' => $timestamp,
         ]);

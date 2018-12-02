@@ -178,7 +178,6 @@ return [
         //My Service Providers
         App\Providers\PaymentServiceProvider::class,
         App\Providers\CommentServiceProvider::class,
-
     ],
 
     /*

@@ -29,6 +29,7 @@ class PaymentController extends Controller
     {
         $payment = [
             'amount' => $request->amount,
+            'notes' => $request->notes,
             'student' => $request->student,
             'teacher' => $request->teacher
         ];
@@ -40,7 +41,8 @@ class PaymentController extends Controller
     {
         $edits = [
             'id' => $request->id,
-            'amount' => $request->amount
+            'amount' => $request->amount,
+            'notes' => $request->notes,
         ];
 
         $this->pyi->editPayment($edits);

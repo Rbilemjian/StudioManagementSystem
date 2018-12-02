@@ -10,7 +10,8 @@ class Payment extends Model
         'amount',
         'student',
         'teacher',
-        'date'
+        'date',
+        'notes'
     ];
 
     public function comments()
