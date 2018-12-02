@@ -4,10 +4,24 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+ require('./bootstrap');
 
-require('./bootstrap');
+ import Vue from 'vue';
+ import VueRouter from 'vue-router';
+ import Vuex from 'vuex';
+ import {routes} from './routes';
+ import StoreData from './store';
+ import MainApp from './components/MainApp.vue';
 
-window.Vue = require('vue');
+ Vue.use(VueRouter);
+ Vue.use(Vuex);
+
+ const store = new Vuex.Store(StoreData);
+
+ const router = new VueRouter({
+    routes,
+    mode:'history'
+ });
 
 /**
  * The following block of code may be used to automatically register your
@@ -29,5 +43,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router,
+    store,
+    components: {
+        MainApp,
+    }
 });
