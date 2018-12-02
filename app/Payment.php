@@ -12,4 +12,9 @@ class Payment extends Model
         'teacher',
         'date'
     ];
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment', 'payment_id', 'id');
+    }
 }

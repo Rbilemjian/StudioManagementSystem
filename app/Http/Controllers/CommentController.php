@@ -32,6 +32,16 @@ class CommentController extends Controller
         $this->ci->createComment($comment);
     }
 
+    public function editComment(Request $request)
+    {
+        $edits = [
+            'id' => $request->id,
+            'text' => $request->text
+        ];
+
+        $this->ci->editComment($edits);
+    }
+
     public function deleteComment(Request $request)
     {
         $id = $request->id;

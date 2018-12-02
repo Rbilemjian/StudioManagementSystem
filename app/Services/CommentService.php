@@ -23,7 +23,14 @@ class CommentService implements CommentInterface
         $comment->save();
     }
 
-    public function deletePayment(int $id)
+    public function editComment(array $edits)
+    {
+        $comment = Comment::find($edits['id']);
+        $comment->text = $edits['text'];
+        $comment->save();
+    }
+
+    public function deleteComment(int $id)
     {
         $comment = Comment::find($id);
         $comment->delete();

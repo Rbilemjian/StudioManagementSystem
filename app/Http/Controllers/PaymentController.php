@@ -20,10 +20,9 @@ class PaymentController extends Controller
         return $this->pyi->getAllPayments();
     }
 
-    public function getComments(Request $request)
+    public function getAllPaymentsAndComments()
     {
-        $payment = $request->payment;
-
+        return $this->pyi->getAllPaymentsAndComments();
     }
 
     public function createPayment(Request $request)
@@ -31,10 +30,20 @@ class PaymentController extends Controller
         $payment = [
             'amount' => $request->amount,
             'student' => $request->student,
-            'teacher' => $request->teacher 
+            'teacher' => $request->teacher
         ];
 
         $this->pyi->createPayment($payment);
+    }
+
+    public function editPayment(Request $request)
+    {
+        $edits = [
+            'id' => $request->id,
+            'amount' => $request->amount
+        ];
+
+        $this->pyi->editPayment($edits);
     }
 
     public function deletePayment(Request $request)

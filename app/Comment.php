@@ -11,4 +11,10 @@ class Comment extends Model
         'user',
         'text',
     ];
+
+    public function payment()
+    {
+        $this->belongsTo('App\Payment');
+    }
+
 }

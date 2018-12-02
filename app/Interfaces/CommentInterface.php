@@ -6,5 +6,6 @@ Interface CommentInterface
 {
     public function getAllComments(): array;
     public function createComment(array $arr);
-    public function deletePayment(int $id);
+    public function deleteComment(int $id);
+    public function editComment(array $arr);
 }
