@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Interfaces\JWTAuthInterface;
 
 class AuthController extends Controller
 {
@@ -14,15 +14,23 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    protected $ai = null;
+    public function __construct(JWTAuthInterface $ai)
     {
         $this->middleware('JWT', ['except' => ['login', 'signUp']]);
+        $this->ai = $ai;
     }
 
     public function signUp(Request $request)
     {
-         User::create($request->all());
-         return $this->login($request);
+        $user = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+
+        $this->ai->signUp($user);
+        return $this->login($request);
     }
 
     /**
@@ -34,7 +42,7 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
 
-        if (! $token = auth()->attempt($credentials)) {
+        if (! $token = auth('api')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
@@ -48,7 +56,7 @@ class AuthController extends Controller
      */
     public function self()
     {
-        return response()->json(auth()->user());
+        return response()->json(auth('api')->user());
     }
 
     /**
@@ -58,7 +66,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        auth()->logout();
+        auth('api')->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
@@ -70,7 +78,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithToken(auth('api')->refresh());
     }
 
     /**
@@ -80,12 +88,19 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+    public function guard()
+    {
+        return $this->ai->guard();
+    }
+
     protected function respondWithToken($token)
     {
         return response()->json([
             'access_token' => $token,
+            'user' => $this->guard()->user(),
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth('api')->factory()->getTTL() * 60
         ]);
     }
 }
