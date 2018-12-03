@@ -23,6 +23,7 @@ Route::group(['prefix' => 'auth'], function ($router) {
 
 Route::group(['middleware' => 'JWT'], function ($router) {
     Route::get('/payments', 'PaymentController@getAllPayments');
+    Route::post('/createpayment', 'PaymentController@createPayment');
 });
 
 
@@ -32,7 +33,6 @@ Route::get('/paymentandcomments/{id}', 'PaymentController@getPaymentAndComments'
 Route::post('/createcomment', 'CommentController@createComment');
 Route::post('/deletecomment', 'CommentController@deleteComment');
 
-Route::post('/createpayment', 'PaymentController@createPayment');
 Route::post('/deletepayment', 'PaymentController@deletePayment');
 
 Route::put('/editcomment', 'CommentController@editComment');

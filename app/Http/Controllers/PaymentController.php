@@ -31,8 +31,8 @@ class PaymentController extends Controller
         $payment = [
             'amount' => $request->amount,
             'notes' => $request->notes,
-            'student' => $request->student,
-            'teacher' => $request->teacher
+            'payed_by' => $request->payed_by,
+            'payed_to' => $request->payed_to
         ];
 
         $this->pyi->createPayment($payment);

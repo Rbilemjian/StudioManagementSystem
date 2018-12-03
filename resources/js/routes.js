@@ -32,10 +32,10 @@ export const routes = [
                 path:'new',
                 component: NewPayment
             },
-            {
-                path:':id',
-                component: Payment
-            }
+            // {
+            //     path:':id',
+            //     component: Payment
+            // }
         ]
     }
 ];

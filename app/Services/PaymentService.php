@@ -38,8 +38,8 @@ class PaymentService implements PaymentInterface
         $payment = new Payment([
             'amount' => $arr['amount'],
             'notes' => $arr['notes'],
-            'teacher' => $arr['teacher'],
-            'student' => $arr['student'],
+            'payed_to' => $arr['payed_to'],
+            'payed_by' => $arr['payed_by'],
             'date' => $date
         ]);
         $payment->save();

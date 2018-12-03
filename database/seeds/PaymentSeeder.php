@@ -16,8 +16,8 @@ class PaymentSeeder extends Seeder
         DB::table('payments')->insert([
            'amount' => 70,
            'date' => $date,
-           'student' => 'studiostudent',
-           'teacher' => 'studioteacher',
+           'payed_by' => 'studiopayed_by',
+           'payed_to' => 'studiopayed_to',
            'notes' => 'This is a payment for monthly tuition in the month of December',
            'created_at' => $timestamp,
            'updated_at' => $timestamp,

@@ -8,8 +8,8 @@ class Payment extends Model
 {
     protected $fillable = [
         'amount',
-        'student',
-        'teacher',
+        'payed_by',
+        'payed_to',
         'date',
         'notes'
     ];

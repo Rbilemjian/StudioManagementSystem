@@ -19,8 +19,8 @@
                 </template>
                 <template v-else>
                     <tr v-for="payment in payments" :key="payment.id">
-                        <td>{{ payment.teacher }}</td>
-                        <td>{{ payment.student }}</td>
+                        <td>{{ payment.payed_to }}</td>
+                        <td>{{ payment.payed_by }}</td>
                         <td>${{ payment.amount }}</td>
                         <td>{{ payment.date }}</td>
                         <td>
