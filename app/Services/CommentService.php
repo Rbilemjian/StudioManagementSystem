@@ -14,7 +14,7 @@ class CommentService implements CommentInterface
 
     public function getPostComments(int $id)
     {
-        return Comment::where('id','=',$id)->get();
+        return Comment::where('payment_id','=',$id)->get();
     }
 
     public function createComment(array $arr)

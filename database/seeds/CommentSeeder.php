@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Comment;
 
 class CommentSeeder extends Seeder
 {
@@ -11,13 +12,6 @@ class CommentSeeder extends Seeder
      */
     public function run()
     {
-        $timestamp = Carbon\Carbon::now()->toDateTimeString();
-        DB::table('comments')->insert([
-            'text' => 'This is a test comment',
-            'user' => 'raffi',
-            'payment_id' => 1,
-            'created_at' => $timestamp,
-            'updated_at' => $timestamp,
-        ]);
+        factory(Comment::class, 1000)->create();
     }
 }

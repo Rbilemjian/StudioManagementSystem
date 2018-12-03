@@ -24,7 +24,7 @@
                         <td>${{ payment.amount }}</td>
                         <td>{{ payment.date }}</td>
                         <td>
-                            <router-link :to="`/payment/${payment.id}`">View</router-link>
+                            <router-link :to="`/payments/${payment.id}`">View</router-link>
                         </td>
                     </tr>
                 </template>

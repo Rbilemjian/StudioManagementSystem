@@ -51297,6 +51297,9 @@ var routes = [{
     }, {
         path: 'new',
         component: __WEBPACK_IMPORTED_MODULE_4__components_payments_New_vue___default.a
+    }, {
+        path: ':id',
+        component: __WEBPACK_IMPORTED_MODULE_5__components_payments_View_vue___default.a
     }]
 }];
 
@@ -51856,17 +51859,21 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Payments")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [_c("router-view")], 1)
+  return _c(
+    "div",
+    { staticClass: "container", staticStyle: { "margin-bottom": "50px" } },
+    [
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-md-8" }, [
+          _c("div", { staticClass: "card card-default" }, [
+            _c("div", { staticClass: "card-header" }, [_vm._v("Payments")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [_c("router-view")], 1)
+          ])
         ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -52073,7 +52080,7 @@ var render = function() {
                     [
                       _c(
                         "router-link",
-                        { attrs: { to: "/payment/" + payment.id } },
+                        { attrs: { to: "/payments/" + payment.id } },
                         [_vm._v("View")]
                       )
                     ],
@@ -53740,7 +53747,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(87)
 /* template */
 var __vue_template__ = __webpack_require__(71)
 /* template functional */
@@ -53788,9 +53795,103 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "div",
+    { staticClass: "payment-view" },
+    [
+      _c("table", { staticClass: "table" }, [
+        _c("tr", [
+          _c("th", { staticStyle: { "white-space": "nowrap" } }, [
+            _vm._v("Payed By")
+          ]),
+          _vm._v(" "),
+          _c("td", [_vm._v(" " + _vm._s(_vm.payment.payed_by) + " ")])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("th", { staticStyle: { "white-space": "nowrap" } }, [
+            _vm._v("Payed To")
+          ]),
+          _vm._v(" "),
+          _c("td", [_vm._v(" " + _vm._s(_vm.payment.payed_to) + " ")])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("th", [_vm._v("Amount")]),
+          _vm._v(" "),
+          _c("td", [_vm._v(" $" + _vm._s(_vm.payment.amount) + " ")])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("th", [_vm._v("Date")]),
+          _vm._v(" "),
+          _c("td", [_vm._v(" " + _vm._s(_vm.payment.date) + " ")])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("th", [_vm._v("Notes")]),
+          _vm._v(" "),
+          _c("td", [_vm._v(" " + _vm._s(_vm.payment.notes) + " ")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        { staticClass: "btn btn-danger", attrs: { to: "/payments" } },
+        [_vm._v("Back to all Payments")]
+      ),
+      _vm._v(" "),
+      _c("h3", { staticStyle: { "margin-top": "30px" } }, [_vm._v("Comments")]),
+      _vm._v(" "),
+      _c("table", { staticClass: "table" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          [
+            !_vm.comments.length
+              ? [_vm._m(1)]
+              : _vm._l(_vm.comments, function(comment) {
+                  return _c("tr", [
+                    _c("td", { staticStyle: { "white-space": "nowrap" } }, [
+                      _vm._v(_vm._s(comment.user))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(comment.text))])
+                  ])
+                })
+          ],
+          2
+        )
+      ])
+    ],
+    1
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("th", [_vm._v("User")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Comment")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", { staticClass: "text-center", attrs: { colspan: "2" } }, [
+        _vm._v(
+          "\n                        No Comments To Show\n                    "
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -54422,6 +54523,97 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'view',
+    created: function created() {
+        var _this = this;
+
+        axios.get("/api/paymentandcomments/" + this.$route.params.id, {
+            headers: {
+                "Authorization": "Bearer " + this.currentUser.token
+            }
+        }).then(function (response) {
+            _this.payment = response.data.payment;
+            _this.comments = response.data.comments;
+        });
+    },
+    data: function data() {
+        return {
+            payment: null,
+            comments: null
+        };
+    },
+
+    computed: {
+        currentUser: function currentUser() {
+            return this.$store.getters.currentUser;
+        }
+    }
+});
 
 /***/ })
 /******/ ]);
