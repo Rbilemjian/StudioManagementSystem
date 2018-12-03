@@ -15,7 +15,7 @@
 
 <script>
     export default {
-        name: 'customers-main'
+        name: 'payments-main'
 
     }
 </script>
