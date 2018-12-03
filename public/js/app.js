@@ -11821,7 +11821,7 @@ module.exports = function() {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(17);
-module.exports = __webpack_require__(83);
+module.exports = __webpack_require__(84);
 
 
 /***/ }),
@@ -11835,10 +11835,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_MainApp_vue__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_MainApp_vue__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_MainApp_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_MainApp_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__helpers_general__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__helpers_general__ = __webpack_require__(80);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -11875,7 +11875,7 @@ Object(__WEBPACK_IMPORTED_MODULE_6__helpers_general__["a" /* initialize */])(sto
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('example-component', __webpack_require__(80));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('example-component', __webpack_require__(81));
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
@@ -52067,9 +52067,9 @@ var render = function() {
             ? [_vm._m(1)]
             : _vm._l(_vm.payments, function(payment) {
                 return _c("tr", { key: payment.id }, [
-                  _c("td", [_vm._v(_vm._s(payment.payed_to))]),
-                  _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(payment.payed_by))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(payment.payed_to))]),
                   _vm._v(" "),
                   _c("td", [_vm._v("$" + _vm._s(payment.amount))]),
                   _vm._v(" "),
@@ -53747,9 +53747,9 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(87)
+var __vue_script__ = __webpack_require__(71)
 /* template */
-var __vue_template__ = __webpack_require__(71)
+var __vue_template__ = __webpack_require__(72)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53789,6 +53789,94 @@ module.exports = Component.exports
 
 /***/ }),
 /* 71 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'view',
+    created: function created() {
+        var _this = this;
+
+        axios.get("/api/paymentandcomments/" + this.$route.params.id, {
+            headers: {
+                "Authorization": "Bearer " + this.currentUser.token
+            }
+        }).then(function (response) {
+            _this.payment = response.data.payment;
+            _this.comments = response.data.comments;
+        });
+    },
+    data: function data() {
+        return {
+            payment: null,
+            comments: null
+        };
+    },
+
+    computed: {
+        currentUser: function currentUser() {
+            return this.$store.getters.currentUser;
+        }
+    }
+});
+
+/***/ }),
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -53902,7 +53990,7 @@ if (false) {
 }
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53980,15 +54068,15 @@ var user = Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["a" /* getLocalUse
 });
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(74)
+var __vue_script__ = __webpack_require__(75)
 /* template */
-var __vue_template__ = __webpack_require__(78)
+var __vue_template__ = __webpack_require__(79)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54027,12 +54115,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Header_vue__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Header_vue__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Header_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Header_vue__);
 //
 //
@@ -54051,15 +54139,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(76)
+var __vue_script__ = __webpack_require__(77)
 /* template */
-var __vue_template__ = __webpack_require__(77)
+var __vue_template__ = __webpack_require__(78)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54098,7 +54186,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54159,7 +54247,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54334,7 +54422,7 @@ if (false) {
 }
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54368,7 +54456,7 @@ if (false) {
 }
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54400,15 +54488,15 @@ function initialize(store, router) {
 }
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(81)
+var __vue_script__ = __webpack_require__(82)
 /* template */
-var __vue_template__ = __webpack_require__(82)
+var __vue_template__ = __webpack_require__(83)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54447,7 +54535,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54476,7 +54564,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54519,101 +54607,10 @@ if (false) {
 }
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 84 */,
-/* 85 */,
-/* 86 */,
-/* 87 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'view',
-    created: function created() {
-        var _this = this;
-
-        axios.get("/api/paymentandcomments/" + this.$route.params.id, {
-            headers: {
-                "Authorization": "Bearer " + this.currentUser.token
-            }
-        }).then(function (response) {
-            _this.payment = response.data.payment;
-            _this.comments = response.data.comments;
-        });
-    },
-    data: function data() {
-        return {
-            payment: null,
-            comments: null
-        };
-    },
-
-    computed: {
-        currentUser: function currentUser() {
-            return this.$store.getters.currentUser;
-        }
-    }
-});
 
 /***/ })
 /******/ ]);

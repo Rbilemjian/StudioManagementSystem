@@ -24,7 +24,7 @@ class PaymentService implements PaymentInterface
 
     public function getPaymentAndComments(int $id)
     {
-        $payment = Payment::find($id)->first();
+        $payment = Payment::where('id','=',$id)->first();
         $comments = $this->ci->getPostComments($id);
         return response()->json([
             "payment" => $payment,
