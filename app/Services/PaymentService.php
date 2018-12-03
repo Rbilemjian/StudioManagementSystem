@@ -14,14 +14,22 @@ class PaymentService implements PaymentInterface
         $this->ci = $ci;
     }
 
-    public function getAllPayments(): array
+    public function getAllPayments()
     {
-        return Payment::all()->toArray();
+        $payments = Payment::all();
+        return response()->json([
+            "payments" => $payments
+        ], 200);
     }
 
-    public function getAllPaymentsAndComments(): array
+    public function getPaymentAndComments(int $id)
     {
-        return Payment::with('comments')->get()->toArray();
+        $payment = Payment::find($id)->first();
+        $comments = $this->ci->getPostComments($id);
+        return response()->json([
+            "payment" => $payment,
+            "comments" => $comments
+        ], 200);
     }
 
     public function createPayment(array $arr)
@@ -35,6 +43,10 @@ class PaymentService implements PaymentInterface
             'date' => $date
         ]);
         $payment->save();
+
+        return response()->json([
+            "payment" => $payment
+        ], 200);
     }
 
     public function editPayment(array $edits)

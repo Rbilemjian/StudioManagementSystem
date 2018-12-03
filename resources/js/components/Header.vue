@@ -17,13 +17,19 @@
                     </template>
                     <template v-else>
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-                                {{ currentUser.name }} <span class="caret"></span>
-                            </a>
+                            <li>
+                                <router-link to="/payments" class="nav-link">Payments</router-link>
+                            </li>
 
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a href="#!" @click.prevent="logout" class="dropdown-item">Logout</a>
-                            </div>
+                            <li class="nav-item dropdown">
+                                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                       {{ currentUser.name }} <span class="caret"></span>
+                                   </a>
+
+                                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                       <a href="#!" @click.prevent="logout" class="dropdown-item">Logout</a>
+                                   </div>
+                            </li>
                         </li>
                     </template>
                 </ul>

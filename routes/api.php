@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::group(['prefix' => 'auth'], function ($router) {
-    
+
     Route::post('signup', 'AuthController@signUp');
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
@@ -21,9 +21,13 @@ Route::group(['prefix' => 'auth'], function ($router) {
     Route::post('self', 'AuthController@self');
 });
 
-Route::get('/payments', 'PaymentController@getAllPayments');
+Route::group(['middleware' => 'JWT'], function ($router) {
+    Route::get('/payments', 'PaymentController@getAllPayments');
+});
+
+
 Route::get('/comments', 'CommentController@getAllComments');
-Route::get('/paymentsandcomments', 'PaymentController@getAllPaymentsAndComments');
+Route::get('/paymentandcomments/{id}', 'PaymentController@getPaymentAndComments');
 
 Route::post('/createcomment', 'CommentController@createComment');
 Route::post('/deletecomment', 'CommentController@deleteComment');

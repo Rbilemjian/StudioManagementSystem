@@ -12,6 +12,11 @@ class CommentService implements CommentInterface
         return Comment::all()->toArray();
     }
 
+    public function getPostComments(int $id)
+    {
+        return Comment::where('id','=',$id)->get();
+    }
+
     public function createComment(array $arr)
     {
         $date = \Carbon\Carbon::now()->toDateString();

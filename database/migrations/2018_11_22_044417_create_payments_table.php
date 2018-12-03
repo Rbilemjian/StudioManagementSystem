@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->increments('id');
             $table->string('student');
             $table->string('teacher');
-            $table->string('notes');
+            $table->longtext('notes');
             $table->integer('amount');
             $table->date('date');
             $table->timestamps();

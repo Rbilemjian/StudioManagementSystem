@@ -48,11 +48,24 @@ export default {
                 localStorage.removeItem("user");
                 state.isLoggedIn = false;
                 state.currentUser = null;
+            },
+            updatePayments(state, payload) {
+                state.payments = payload;
             }
         },
         actions: {
             login(context) {
                 context.commit("login");
+            },
+            getPayments(context) {
+                axios.get('/api/payments', {
+                    headers: {
+                        "Authorization": `Bearer ${context.state.currentUser.token}`
+                    }
+                })
+                .then((response) => {
+                    context.commit('updatePayments', response.data.payments);
+                });
             }
         },
 
