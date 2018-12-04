@@ -51375,6 +51375,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'home',
+    created: function created() {
+        axios.defaults.headers.common["Authorization"] = 'Bearer ' + this.$store.getters.currentUser.token;
+    },
+
     computed: {
         welcome: function welcome() {
             return this.$store.getters.welcome;
@@ -52315,11 +52319,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return;
             }
 
-            axios.post('/api/createpayment', this.$data.payment, {
-                headers: {
-                    "Authorization": 'Bearer ' + this.currentUser.token
-                }
-            }).then(function (response) {
+            axios.post('/api/createpayment', this.$data.payment).then(function (response) {
                 _this.$router.push('/payments');
             });
         },
@@ -53852,11 +53852,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        axios.get("/api/paymentandcomments/" + this.$route.params.id, {
-            headers: {
-                "Authorization": "Bearer " + this.currentUser.token
-            }
-        }).then(function (response) {
+        axios.get('/api/paymentandcomments/' + this.$route.params.id).then(function (response) {
             _this.payment = response.data.payment;
             _this.comments = response.data.comments;
         });
@@ -54055,11 +54051,7 @@ var user = Object(__WEBPACK_IMPORTED_MODULE_0__helpers_auth__["a" /* getLocalUse
             context.commit("login");
         },
         getPayments: function getPayments(context) {
-            axios.get('/api/payments', {
-                headers: {
-                    "Authorization": "Bearer " + context.state.currentUser.token
-                }
-            }).then(function (response) {
+            axios.get('/api/payments').then(function (response) {
                 context.commit('updatePayments', response.data.payments);
             });
         }
@@ -54233,6 +54225,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'app-header',
+    created: function created() {
+        if (this.$store.getters.isLoggedIn) {
+            axios.defaults.headers.common["Authorization"] = 'Bearer ' + this.$store.getters.currentUser.token;
+        }
+    },
+
     methods: {
         logout: function logout() {
             this.$store.commit('logout');

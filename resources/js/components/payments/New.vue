@@ -81,11 +81,7 @@
                     return;
                 }
 
-                axios.post('/api/createpayment', this.$data.payment, {
-                    headers: {
-                        "Authorization": `Bearer ${this.currentUser.token}`
-                    }
-                })
+                axios.post('/api/createpayment', this.$data.payment)
                 .then((response) => {
                     this.$router.push('/payments');
                 });

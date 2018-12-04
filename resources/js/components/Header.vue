@@ -40,6 +40,12 @@
 <script>
     export default {
         name: 'app-header',
+        created() {
+            if( this.$store.getters.isLoggedIn )
+            {
+                axios.defaults.headers.common["Authorization"] = 'Bearer ' + this.$store.getters.currentUser.token;
+            }
+        },
         methods: {
             logout() {
                 this.$store.commit('logout');

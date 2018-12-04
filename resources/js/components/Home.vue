@@ -17,6 +17,9 @@
 <script>
 export default {
       name: 'home',
+      created() {
+          axios.defaults.headers.common["Authorization"] = 'Bearer ' + this.$store.getters.currentUser.token;
+      },
       computed: {
           welcome() {
               return this.$store.getters.welcome

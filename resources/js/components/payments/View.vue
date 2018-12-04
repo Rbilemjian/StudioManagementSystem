@@ -55,11 +55,7 @@
     export default {
         name: 'view',
         created() {
-            axios.get(`/api/paymentandcomments/${this.$route.params.id}`, {
-                headers: {
-                    "Authorization": `Bearer ${this.currentUser.token}`
-                }
-            })
+            axios.get(`/api/paymentandcomments/${this.$route.params.id}`)
             .then((response) => {
                 this.payment = response.data.payment;
                 this.comments = response.data.comments;

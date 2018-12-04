@@ -58,11 +58,7 @@ export default {
                 context.commit("login");
             },
             getPayments(context) {
-                axios.get('/api/payments', {
-                    headers: {
-                        "Authorization": `Bearer ${context.state.currentUser.token}`
-                    }
-                })
+                axios.get('/api/payments')
                 .then((response) => {
                     context.commit('updatePayments', response.data.payments);
                 });
