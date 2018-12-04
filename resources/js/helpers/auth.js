@@ -15,13 +15,15 @@ export function logout() {
 }
 
 export function register(credentials) {
+    return new Promise((res, rej) => {
     return axios.post('/api/auth/signup', credentials)
         .then((response) => {
             res(response.data);
         })
         .catch((err) => {
-            rej("Registration error");
+            rej("Username or Email is already taken");
         })
+    })
 }
 
 export function getLocalUser() {

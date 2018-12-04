@@ -1,9 +1,11 @@
 import Home from './components/Home.vue';
 import Login from './components/auth/Login.vue';
+import Register from './components/auth/Register.vue';
 import PaymentsMain from './components/payments/Main.vue';
 import PaymentsList from './components/payments/List.vue';
 import NewPayment from './components/payments/New.vue';
 import Payment from './components/payments/View.vue';
+
 
 export const routes = [
     {
@@ -12,6 +14,10 @@ export const routes = [
         meta: {
             requiresAuth: true
         }
+    },
+    {
+        path:'/register',
+        component: Register
     },
     {
         path:'/login',
