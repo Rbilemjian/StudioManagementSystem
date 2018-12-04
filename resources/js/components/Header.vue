@@ -38,6 +38,9 @@
     </nav>
 </template>
 <script>
+
+    import {logout} from '../helpers/auth';
+
     export default {
         name: 'app-header',
         created() {
@@ -48,6 +51,7 @@
         },
         methods: {
             logout() {
+                logout();
                 this.$store.commit('logout');
                 this.$router.push('/login');
             }
