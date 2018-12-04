@@ -17,6 +17,14 @@ class CommentService implements CommentInterface
         return Comment::where('payment_id','=',$id)->get();
     }
 
+    public function getPostCommentsJSON(int $id)
+    {
+        $comments = Comment::where('payment_id','=',$id)->get();
+        return response()->json([
+            "comments" => $comments
+        ], 200);
+    }
+
     public function createComment(array $arr)
     {
         $date = \Carbon\Carbon::now()->toDateString();

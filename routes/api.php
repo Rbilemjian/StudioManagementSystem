@@ -22,15 +22,19 @@ Route::group(['prefix' => 'auth'], function ($router) {
 });
 
 Route::group(['middleware' => 'JWT'], function ($router) {
+
     Route::get('/payments', 'PaymentController@getAllPayments');
+    Route::get('/postcomments/{id}', 'CommentController@getPostCommentsJSON');
+    Route::get('/paymentandcomments/{id}', 'PaymentController@getPaymentAndComments');
+
     Route::post('/createpayment', 'PaymentController@createPayment');
+    Route::post('/createcomment', 'CommentController@createComment');
+
 });
 
 
 Route::get('/comments', 'CommentController@getAllComments');
-Route::get('/paymentandcomments/{id}', 'PaymentController@getPaymentAndComments');
 
-Route::post('/createcomment', 'CommentController@createComment');
 Route::post('/deletecomment', 'CommentController@deleteComment');
 
 Route::post('/deletepayment', 'PaymentController@deletePayment');

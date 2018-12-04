@@ -8,7 +8,8 @@ export default {
             isLoggedIn: !!user,
             loading: false,
             auth_error: null,
-            payments: []
+            payments: [],
+            comments: [],
         },
         getters: {
             isLoading(state) {
@@ -25,6 +26,9 @@ export default {
             },
             payments(state) {
                 return state.payments;
+            },
+            comments(state) {
+                return state.comments;
             }
         },
         mutations: {
@@ -51,6 +55,9 @@ export default {
             },
             updatePayments(state, payload) {
                 state.payments = payload;
+            },
+            updateComments(state, payload) {
+                state.comments = payload;
             }
         },
         actions: {
@@ -61,6 +68,12 @@ export default {
                 axios.get('/api/payments')
                 .then((response) => {
                     context.commit('updatePayments', response.data.payments);
+                });
+            },
+            getComments(context, payload) {
+                axios.get(`/api/postcomments/${payload}`)
+                .then((response) => {
+                    context.commit('updateComments', response.data.comments);
                 });
             }
         },

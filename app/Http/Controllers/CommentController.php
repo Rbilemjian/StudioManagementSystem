@@ -21,6 +21,18 @@ class CommentController extends Controller
         return $this->ci->getAllComments();
     }
 
+    public function getPostCommentsJSON(Request $request)
+    {
+        $id = $request->id;
+        return $this->ci->getPostCommentsJSON($id);
+    }
+
+    public function getPostComments(Request $request)
+    {
+        $id = $request->id;
+        return $this->ci->getPostComments($id);
+    }
+
     public function createComment(Request $request)
     {
         $comment = [

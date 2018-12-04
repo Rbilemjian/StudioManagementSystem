@@ -21,17 +21,31 @@
                 <th>Notes</th>
                 <td> {{payment.notes}} </td>
             </tr>
-
-
-
         </table>
         <router-link to="/payments" class="btn btn-danger">Back to all Payments</router-link>
         <h3 style="margin-top:30px;">Comments</h3>
-        <table class="table">
-            <thead>
-                <th>User</th>
-                <th>Comment</th>
-            </thead>
+
+        <h4 style="margin-top:50px;">Contribute to the Conversation</h4>
+        <form @submit.prevent="add">
+            <div class="row" style="margin-top:30px;">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <textarea class="form-control" rows="4" v-model="newComment.text"/>
+                </div>
+            </div>
+            <div class="col-md-11" style="text-align:right; margin-top:15px;">
+                <input type="submit" value="Add Comment" class="btn btn-primary">
+            </div>
+        </form>
+        <div class="errors form-group-row" v-if="errors" style="margin-top:20px; margin-bottom: 5px; margin-right:0px; margin-left: 0px;">
+            <ul style="list-style:none; margin-left:0px; padding-left:0px; text-align:center">
+                <li v-for="(fieldsError, fieldName) in  errors" :key="fieldName">
+                    {{ fieldsError.join('\n') }}
+                </li>
+            </ul>
+        </div>
+
+        <table class="table" style="margin-top:30px;">
             <tbody>
                 <template v-if="!comments.length">
                     <tr>
@@ -41,7 +55,7 @@
                     </tr>
                 </template>
                 <template v-else>
-                    <tr v-for="comment in comments">
+                    <tr v-for="comment in this.comments">
                         <td style="white-space:nowrap;">{{ comment.user }}</td>
                         <td>{{ comment.text }}</td>
                     </tr>
@@ -52,25 +66,75 @@
 </template>
 
 <script>
+    import validate from 'validate.js';
+    import {mapGetters} from 'vuex';
     export default {
         name: 'view',
         created() {
             axios.get(`/api/paymentandcomments/${this.$route.params.id}`)
             .then((response) => {
                 this.payment = response.data.payment;
-                this.comments = response.data.comments;
+                this.$store.dispatch('getComments', this.newComment.payment_id);
             });
         },
         data() {
             return {
                 payment: null,
-                comments: null
+                newComment: {
+                    user: '',
+                    text: '',
+                    payment_id: this.$route.params.id,
+                },
+                errors: null
             }
         },
         computed: {
             currentUser() {
-                return this.$store.getters.currentUser;
+                this.newComment.user = this.$store.getters.currentUser.name;
+            },
+            ...mapGetters([
+                'comments'
+            ])
+        },
+        methods: {
+            add() {
+                this.errors = null;
+
+                this.newComment.user = this.$store.getters.currentUser.name;
+
+                const constraints = this.getConstraints();
+
+                const errors = validate(this.$data.newComment, constraints);
+
+                if(errors)
+                {
+                    this.errors = errors;
+                    return;
+                }
+                axios.post('/api/createcomment', this.newComment)
+                .then((response) => {
+                    this.$store.dispatch('getComments', this.newComment.payment_id);
+                    this.newComment.text = '';
+                });
+
+            },
+            getConstraints() {
+                return {
+                    text: {
+                        presence: true,
+                        length: {
+                            minimum: 1,
+                            message: ' of comment cannot be empty'
+                        }
+                    }
+                };
             }
         }
     }
 </script>
+
+<style scoped>
+    .errors {
+        color: red;
+    }
+</style>
