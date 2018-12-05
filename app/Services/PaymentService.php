@@ -22,6 +22,14 @@ class PaymentService implements PaymentInterface
         ], 200);
     }
 
+    public function getPayment(int $id)
+    {
+        $payment = Payment::where('id','=',$id)->first();
+        return response()->json([
+            "payment" => $payment
+        ], 200);
+    }
+
     public function getPaymentAndComments(int $id)
     {
         $payment = Payment::where('id','=',$id)->first();

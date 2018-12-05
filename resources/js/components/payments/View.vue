@@ -89,7 +89,7 @@
     export default {
         name: 'view',
         created() {
-            axios.get(`/api/paymentandcomments/${this.$route.params.id}`)
+            axios.get(`/api/payments/${this.$route.params.id}`)
             .then((response) => {
                 this.payment = response.data.payment;
                 this.$store.dispatch('getComments', this.newComment.payment_id);

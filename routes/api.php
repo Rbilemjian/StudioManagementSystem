@@ -24,6 +24,7 @@ Route::group(['prefix' => 'auth'], function ($router) {
 Route::group(['middleware' => 'JWT'], function ($router) {
 
     Route::get('/payments', 'PaymentController@getAllPayments');
+    Route::get('/payments/{id}', 'PaymentController@getPayment');
     Route::get('/postcomments/{id}', 'CommentController@getPostCommentsJSON');
     Route::get('/paymentandcomments/{id}', 'PaymentController@getPaymentAndComments');
 

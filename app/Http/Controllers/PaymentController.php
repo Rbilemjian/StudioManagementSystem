@@ -20,6 +20,12 @@ class PaymentController extends Controller
         return $this->pyi->getAllPayments();
     }
 
+    public function getPayment(Request $request)
+    {
+        $id = $request->id;
+        return $this->pyi->getPayment($id);
+    }
+
     public function getPaymentAndComments(Request $request)
     {
         $id = $request->id;
