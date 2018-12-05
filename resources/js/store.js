@@ -58,7 +58,13 @@ export default {
             },
             updateComments(state, payload) {
                 state.comments = payload;
-            }
+            },
+            deleteComment(state, payload) {
+                var index = state.comments.indexOf(payload);
+                if(index > -1) {
+                    state.comments.splice(index, 1);
+                }
+            },
         },
         actions: {
             login(context) {
@@ -75,6 +81,13 @@ export default {
                 .then((response) => {
                     context.commit('updateComments', response.data.comments);
                 });
+            },
+            deleteComment(context, payload) {
+                context.commit('deleteComment', payload);
+                axios.post(`/api/deletecomment/${payload.id}`)
+                    .catch((e) => {
+                        rej(console.log(e));
+                    })
             }
         },
 

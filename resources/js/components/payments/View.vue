@@ -1,3 +1,4 @@
+
 <template>
     <div class="payment-view">
         <table class="table">
@@ -56,8 +57,24 @@
                 </template>
                 <template v-else>
                     <tr v-for="comment in this.comments">
-                        <td style="white-space:nowrap;">{{ comment.user }}</td>
-                        <td>{{ comment.text }}</td>
+                        <td style="white-space:nowrap;">
+                            {{ comment.user }}
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    {{ comment.text }}
+                                </div>
+                                <div class="col-md-2 text-right">
+                                    <div v-if='comment.user == currentUser.name'>
+                                        <button class="btn btn-danger" v-on:click="deleteComment(comment)">
+                                            <span class="fa fa-trash" aria-hidden = "true"></span>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 </template>
             </tbody>
@@ -90,7 +107,7 @@
         },
         computed: {
             currentUser() {
-                this.newComment.user = this.$store.getters.currentUser.name;
+                return this.$store.getters.currentUser;
             },
             ...mapGetters([
                 'comments'
@@ -117,6 +134,9 @@
                     this.newComment.text = '';
                 });
 
+            },
+            deleteComment(comment) {
+                this.$store.dispatch('deleteComment', comment);
             },
             getConstraints() {
                 return {
