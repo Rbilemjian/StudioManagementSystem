@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <router-link class="navbar-brand" to="/">My Vue App</router-link>
+            <router-link class="navbar-brand" to="/">Payment Logger</router-link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -17,6 +17,9 @@
                     </template>
                     <template v-else>
                         <li class="nav-item dropdown">
+                            <li>
+                                <router-link to="/" class="nav-link">Home</router-link>
+                            </li>
                             <li>
                                 <router-link to="/payments" class="nav-link">Payments</router-link>
                             </li>

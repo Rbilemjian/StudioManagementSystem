@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="col-md-2 text-right">
                                     <div v-if='comment.user == currentUser.name'>
-                                        <button class="btn btn-danger" v-on:click="deleteComment(comment)">
+                                        <button class="btn btn-sm btn-danger" v-on:click="deleteComment(comment)">
                                             <span class="fa fa-trash" aria-hidden = "true"></span>
                                         </button>
                                     </div>
