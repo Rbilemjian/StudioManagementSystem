@@ -37,10 +37,11 @@
             </table>
         </form>
         <div class="errors" v-if="errors">
-            <li v-for="(fieldsError, fieldName) in  errors" :key="fieldName">
-                {{ fieldsError.join('\n') }}
-
-            </li>
+            <ul style="list-style:none; margin-left:0px; padding-left:0px; text-align:center">
+                <li v-for="(fieldsError, fieldName) in  errors" :key="fieldName">
+                    {{ fieldsError.join('\n') }}
+                </li>
+            </ul>
         </div>
     </div>
 
@@ -105,13 +106,15 @@
                     },
                     amount: {
                         presence: true,
-                        numericality: true,
+                        numericality: {
+                            greaterThan:0
+                        }
                     },
                     notes: {
                         presence: true,
                         length: {
                             minimum: 1,
-                            message: 'must be at least 1 character long'
+                            message: 'cannot be blank'
                         }
                     }
                 };
