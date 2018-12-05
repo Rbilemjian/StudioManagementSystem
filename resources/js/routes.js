@@ -32,15 +32,24 @@ export const routes = [
         children: [
             {
                 path:'/',
-                component: PaymentsList
+                component: PaymentsList,
+                meta: {
+                    requiresAuth: true
+                }
             },
             {
                 path:'new',
-                component: NewPayment
+                component: NewPayment,
+                meta: {
+                    requiresAuth: true
+                }
             },
             {
                 path:':id',
-                component: Payment
+                component: Payment,
+                meta: {
+                    requiresAuth: true
+                }
             }
         ]
     }

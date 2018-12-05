@@ -1,7 +1,7 @@
 
 <template>
     <div class="payment-view">
-        <table class="table">
+        <table class="table" style="table-layout:fixed; width:100%;">
             <tr>
                 <th style="white-space:nowrap">Payed By</th>
                 <td> {{payment.payed_by}} </td>
@@ -20,7 +20,9 @@
             </tr>
             <tr>
                 <th>Notes</th>
-                <td> {{payment.notes}} </td>
+                <td style="word-wrap:break-word; white-space: normal">
+                    {{payment.notes}}
+                </td>
             </tr>
         </table>
         <router-link to="/payments" class="btn btn-danger">Back to all Payments</router-link>
@@ -58,7 +60,7 @@
                 <template v-else>
                     <tr v-for="comment in this.comments">
                         <td style="white-space:nowrap;">
-                            {{ comment.user }}
+                            <strong>{{ comment.user }}</strong>
                         </td>
                         <td>
                             <div class="row">
