@@ -25,18 +25,17 @@
                 </td>
             </tr>
         </table>
-        <router-link to="/payments" class="btn btn-danger">Back to all Payments</router-link>
         <h3 style="margin-top:30px;">Comments</h3>
 
-        <h4 style="margin-top:50px;">Contribute to the Conversation</h4>
+        <h5 style="margin-top:50px; color:gray;">Contribute to the Conversation:</h5>
         <form @submit.prevent="add">
-            <div class="row" style="margin-top:30px;">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
+            <div class="row" style="margin-top:15px;">
+                <!-- <div class="col-md-1"></div> -->
+                <div class="col-md-12">
                     <textarea class="form-control" rows="4" v-model="newComment.text"/>
                 </div>
             </div>
-            <div class="col-md-11" style="text-align:right; margin-top:15px;">
+            <div class="col-md-12" style="text-align:right; margin-top:15px;">
                 <input type="submit" value="Add Comment" class="btn btn-primary">
             </div>
         </form>
