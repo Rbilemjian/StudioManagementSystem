@@ -19,7 +19,7 @@ class CommentService implements CommentInterface
 
     public function getPostCommentsJSON(int $id)
     {
-        $comments = Comment::where('payment_id','=',$id)->get();
+        $comments = Comment::where('payment_id','=',$id)->orderBy('created_at', 'desc')->get();
         return response()->json([
             "comments" => $comments
         ], 200);

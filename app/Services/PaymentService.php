@@ -16,7 +16,7 @@ class PaymentService implements PaymentInterface
 
     public function getAllPayments()
     {
-        $payments = Payment::all();
+        $payments = Payment::orderBy('created_at', 'desc')->get();
         return response()->json([
             "payments" => $payments
         ], 200);
