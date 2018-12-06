@@ -93,15 +93,15 @@
                     payed_by: {
                         presence: true,
                         length: {
-                            minimum: 3,
-                            message: 'must be at least 3 characters long'
+                            minimum: 2,
+                            message: 'must be at least 2 characters long'
                         }
                     },
                     payed_to: {
                         presence: true,
                         length: {
-                            minimum: 3,
-                            message: 'must be at least 3 characters long'
+                            minimum: 2,
+                            message: 'must be at least 2 characters long'
                         }
                     },
                     amount: {
