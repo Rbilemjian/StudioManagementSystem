@@ -67,7 +67,7 @@ class PaymentService implements PaymentInterface
 
     public function deletePayment(int $id)
     {
-        $Payment = Payment::find($id);
+        $Payment = Payment::where('id','=',$id);
         $Payment->delete();
     }
 

@@ -31,15 +31,13 @@ Route::group(['middleware' => 'JWT'], function ($router) {
     Route::post('/createpayment', 'PaymentController@createPayment');
     Route::post('/createcomment', 'CommentController@createComment');
     Route::post('/deletecomment/{id}', 'CommentController@deleteComment');
-
-
+    Route::post('/deletepayment/{id}', 'PaymentController@deletePayment');
 });
 
 
 Route::get('/comments', 'CommentController@getAllComments');
 
 
-Route::post('/deletepayment', 'PaymentController@deletePayment');
 
 Route::put('/editcomment', 'CommentController@editComment');
 Route::put('/editpayment', 'PaymentController@editPayment');

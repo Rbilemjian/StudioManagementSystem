@@ -65,6 +65,20 @@ export default {
                     state.comments.splice(index, 1);
                 }
             },
+            deletePayment(state, payload) {
+                var index = -1;
+                for(var i= 0; i < state.payments.length; i++)
+                {
+                    if(state.payments[i].id == payload)
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+                if(index > -1)
+                    state.payments.splice(index, 1);
+
+            }
         },
         actions: {
             login(context) {
@@ -86,7 +100,14 @@ export default {
                 context.commit('deleteComment', payload);
                 axios.post(`/api/deletecomment/${payload.id}`)
                     .catch((e) => {
-                        rej(console.log(e));
+                        console.log(e);
+                    })
+            },
+            deletePayment(context, payload) {
+                context.commit('deletePayment', payload);
+                axios.post(`/api/deletepayment/${payload}`)
+                    .catch((e) => {
+                        console.log(e);
                     })
             }
         },

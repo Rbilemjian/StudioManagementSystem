@@ -1,6 +1,13 @@
 
 <template>
     <div class="payment-view">
+        <div class="row">
+            <div class="col-md-12" style="text-align:right; display:inline-block; margin-bottom:10px;">
+                <button class="btn btn-danger btn-sm" v-on:click="deletePayment()">Delete Payment
+                    <span class="fa fa-trash" style="margin-left:7px;" aria-hidden = "true"></span>
+                </button>
+            </div>
+        </div>
         <table class="table" style="table-layout:fixed; width:100%;">
             <tr>
                 <th style="white-space:nowrap">Payed By</th>
@@ -138,6 +145,11 @@
             },
             deleteComment(comment) {
                 this.$store.dispatch('deleteComment', comment);
+            },
+            deletePayment() {
+                var id = this.$route.params.id
+                this.$store.dispatch('deletePayment', id);
+                this.$router.push({path: '/payments'});
             },
             getConstraints() {
                 return {
