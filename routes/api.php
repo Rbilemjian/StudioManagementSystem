@@ -17,8 +17,6 @@ Route::group(['prefix' => 'auth'], function ($router) {
     Route::post('signup', 'AuthController@signUp');
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('self', 'AuthController@self');
 });
 
 Route::group(['middleware' => 'JWT'], function ($router) {
@@ -26,18 +24,10 @@ Route::group(['middleware' => 'JWT'], function ($router) {
     Route::get('/payments', 'PaymentController@getAllPayments');
     Route::get('/payments/{id}', 'PaymentController@getPayment');
     Route::get('/postcomments/{id}', 'CommentController@getPostCommentsJSON');
-    Route::get('/paymentandcomments/{id}', 'PaymentController@getPaymentAndComments');
 
     Route::post('/createpayment', 'PaymentController@createPayment');
     Route::post('/createcomment', 'CommentController@createComment');
+
     Route::post('/deletecomment/{id}', 'CommentController@deleteComment');
     Route::post('/deletepayment/{id}', 'PaymentController@deletePayment');
 });
-
-
-Route::get('/comments', 'CommentController@getAllComments');
-
-
-
-Route::put('/editcomment', 'CommentController@editComment');
-Route::put('/editpayment', 'PaymentController@editPayment');

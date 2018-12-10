@@ -7,16 +7,6 @@ use App\Interfaces\CommentInterface;
 class CommentService implements CommentInterface
 {
 
-    public function getAllComments(): array
-    {
-        return Comment::all()->toArray();
-    }
-
-    public function getPostComments(int $id)
-    {
-        return Comment::where('payment_id','=',$id)->get();
-    }
-
     public function getPostCommentsJSON(int $id)
     {
         $comments = Comment::where('payment_id','=',$id)->orderBy('created_at', 'desc')->get();
@@ -33,13 +23,6 @@ class CommentService implements CommentInterface
             'user' => $arr['user'],
             'payment_id' => $arr['payment_id']
         ]);
-        $comment->save();
-    }
-
-    public function editComment(array $edits)
-    {
-        $comment = Comment::find($edits['id']);
-        $comment->text = $edits['text'];
         $comment->save();
     }
 

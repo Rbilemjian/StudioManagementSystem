@@ -8,12 +8,6 @@ use App\Interfaces\CommentInterface;
 class PaymentService implements PaymentInterface
 {
 
-    protected $ci = null;
-    public function __construct(CommentInterface $ci)
-    {
-        $this->ci = $ci;
-    }
-
     public function getAllPayments()
     {
         $payments = Payment::orderBy('created_at', 'desc')->get();
@@ -27,16 +21,6 @@ class PaymentService implements PaymentInterface
         $payment = Payment::where('id','=',$id)->first();
         return response()->json([
             "payment" => $payment
-        ], 200);
-    }
-
-    public function getPaymentAndComments(int $id)
-    {
-        $payment = Payment::where('id','=',$id)->first();
-        $comments = $this->ci->getPostComments($id);
-        return response()->json([
-            "payment" => $payment,
-            "comments" => $comments
         ], 200);
     }
 
@@ -55,14 +39,6 @@ class PaymentService implements PaymentInterface
         return response()->json([
             "payment" => $payment
         ], 200);
-    }
-
-    public function editPayment(array $edits)
-    {
-        $payment = Payment::find($edits['id']);
-        $payment->amount = $edits['amount'];
-        $payment->notes = $edits['notes'];
-        $payment->save();
     }
 
     public function deletePayment(int $id)

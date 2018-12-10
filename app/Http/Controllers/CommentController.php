@@ -16,21 +16,10 @@ class CommentController extends Controller
         $this->ci = $ci;
     }
 
-    public function getAllComments()
-    {
-        return $this->ci->getAllComments();
-    }
-
     public function getPostCommentsJSON(Request $request)
     {
         $id = $request->id;
         return $this->ci->getPostCommentsJSON($id);
-    }
-
-    public function getPostComments(Request $request)
-    {
-        $id = $request->id;
-        return $this->ci->getPostComments($id);
     }
 
     public function createComment(Request $request)
@@ -42,16 +31,6 @@ class CommentController extends Controller
         ];
 
         $this->ci->createComment($comment);
-    }
-
-    public function editComment(Request $request)
-    {
-        $edits = [
-            'id' => $request->id,
-            'text' => $request->text
-        ];
-
-        $this->ci->editComment($edits);
     }
 
     public function deleteComment(Request $request)
