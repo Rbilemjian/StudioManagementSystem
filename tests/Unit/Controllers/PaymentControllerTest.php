@@ -13,15 +13,14 @@ use Mockery;
 
 class PaymentControllerTest extends TestCase
 {
-
     public $retriever;
     public $controller;
 
     public function setUp()
     {
         parent::setUp();
-        $this->controller = Mockery::spy(PaymentInterface::class);
-        $this->retriever = new PaymentController($this->controller);
+        $this->retriever = Mockery::spy(PaymentInterface::class);
+        $this->controller = new PaymentController($this->retriever);
     }
 
     public function testGetAllPayments()
@@ -43,12 +42,12 @@ class PaymentControllerTest extends TestCase
             ],
         ]);
 
-        $this->controller
+        $this->retriever
             ->shouldReceive('getAllPayments')
             ->once()
             ->andReturn($data);
 
-        $response = $this->retriever->getAllPayments();
+        $response = $this->controller->getAllPayments();
 
         $this->assertEquals($data, $response);
     }
@@ -71,13 +70,13 @@ class PaymentControllerTest extends TestCase
 
         $request = new Request($input);
 
-        $this->controller
+        $this->retriever
             ->shouldReceive('getPayment')
             ->once()
             ->with(1)
             ->andReturn($data);
 
-        $response = $this->retriever->getPayment($request);
+        $response = $this->controller->getPayment($request);
 
         $this->assertEquals($response, $data);
     }
@@ -112,13 +111,13 @@ class PaymentControllerTest extends TestCase
         $dataArray['payed_to'] = $request->payed_to;
         $dataArray['payed_by'] = $request->payed_by;
 
-        $this->controller
+        $this->retriever
             ->shouldReceive('createPayment')
             ->once()
             ->with($dataArray)
             ->andReturn($data);
 
-        $response = $this->retriever->createPayment($request);
+        $response = $this->controller->createPayment($request);
 
         $this->assertEquals($response, $data);
 

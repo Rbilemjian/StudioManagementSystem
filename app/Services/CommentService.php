@@ -24,6 +24,9 @@ class CommentService implements CommentInterface
             'payment_id' => $arr['payment_id']
         ]);
         $comment->save();
+        return response()->json([
+            "comment" => $comment
+        ], 200);
     }
 
     public function deleteComment(int $id)

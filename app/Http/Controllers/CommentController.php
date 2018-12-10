@@ -30,7 +30,7 @@ class CommentController extends Controller
             'payment_id' => $request->payment_id
         ];
 
-        $this->ci->createComment($comment);
+        return $this->ci->createComment($comment);
     }
 
     public function deleteComment(Request $request)
