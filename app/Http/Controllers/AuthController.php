@@ -23,14 +23,8 @@ class AuthController extends Controller
 
     public function signUp(Request $request)
     {
-        $user = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password
-        ];
 
-        $this->ai->signUp($user);
-        return $this->login($request);
+        return $this->ai->signUp($request);
     }
 
     /**
@@ -40,23 +34,7 @@ class AuthController extends Controller
      */
     public function login()
     {
-        $credentials = request(['email', 'password']);
-
-        if (! $token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        return $this->respondWithToken($token);
-    }
-
-    /**
-     * Get the authenticated User.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function self()
-    {
-        return response()->json(auth('api')->user());
+        return $this->ai->login();
     }
 
     /**
@@ -66,19 +44,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        auth('api')->logout();
-
-        return response()->json(['message' => 'Successfully logged out']);
-    }
-
-    /**
-     * Refresh a token.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function refresh()
-    {
-        return $this->respondWithToken(auth('api')->refresh());
+        return $this->ai->logout();
     }
 
     /**
@@ -94,13 +60,5 @@ class AuthController extends Controller
         return $this->ai->guard();
     }
 
-    protected function respondWithToken($token)
-    {
-        return response()->json([
-            'access_token' => $token,
-            'user' => $this->guard()->user(),
-            'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60
-        ]);
-    }
+
 }
