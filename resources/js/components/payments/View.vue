@@ -39,7 +39,7 @@
             <div class="row" style="margin-top:15px;">
                 <!-- <div class="col-md-1"></div> -->
                 <div class="col-md-12">
-                    <textarea class="form-control" rows="4" v-model="newComment.text"/>
+                    <textarea class="form-control" id="comment-input" rows="4" v-model="newComment.text"/>
                 </div>
             </div>
             <div class="col-md-12" style="text-align:right; margin-top:15px;">

@@ -65,7 +65,7 @@ class FrontEndTest extends DuskTestCase
         });
     }
 
-    public function testViewPayment()
+    public function testViewPaymentAndAddComment()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/payments')
