@@ -1,5 +1,4 @@
 <template>
-    <body>
         <div class="login row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
@@ -27,7 +26,6 @@
                 </div>
             </div>
         </div>
-    </body>
 </template>
 
 <script>
