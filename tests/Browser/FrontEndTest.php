@@ -65,6 +65,18 @@ class FrontEndTest extends DuskTestCase
         });
     }
 
+    public function testViewPayment()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/payments')
+                    ->waitForLink('View')
+                    ->assertSee('View')
+                    ->clickLink('View')
+                    ->waitForText('Comments')
+                    ->assertSee('Comments');
+        });
+    }
+
     public function testNewPayment()
     {
         $this->browse(function (Browser $browser) {
@@ -73,11 +85,20 @@ class FrontEndTest extends DuskTestCase
                     ->assertSee('New Payment')
                     ->clickLink('New Payment')
                     ->waitForLink('Cancel')
-                    ->assertSee('Cancel');
+                    ->assertSee('Cancel')
+                    ->type('#payed-by', 'Frontend Test')
+                    ->type('#payed-to', 'Jimmy')
+                    ->type('#amount', '200')
+                    ->type('#notes', 'test notes')
+                    ->press('input[type="submit"]')
+                    ->waitForLink('New Payment')
+                    ->assertSee('New Payment')
+                    ->waitForText('Frontend Test')
+                    ->assertSee('Frontend Test');
         });
     }
 
-    public function testNavLogout()
+    public function testLogout()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')

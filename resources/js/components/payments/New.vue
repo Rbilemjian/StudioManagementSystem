@@ -5,25 +5,25 @@
                 <tr>
                     <th>Payed By</th>
                     <td>
-                        <input type="text" class="form-control" v-model="payment.payed_by"/>
+                        <input type="text" id="payed-by" class="form-control" v-model="payment.payed_by"/>
                     </td>
                 </tr>
                 <tr>
                     <th>Payed To</th>
                     <td>
-                        <input type="text" class="form-control" v-model="payment.payed_to"/>
+                        <input type="text" id="payed-to" class="form-control" v-model="payment.payed_to"/>
                     </td>
                 </tr>
                 <tr>
                     <th>Amount ($)</th>
                     <td>
-                        <input type="number" class="form-control" v-model="payment.amount"/>
+                        <input type="number" id="amount" class="form-control" v-model="payment.amount"/>
                     </td>
                 </tr>
                 <tr>
                     <th>Notes</th>
                     <td>
-                        <input type="text" class="form-control" v-model="payment.notes"/>
+                        <input type="text" id="notes" class="form-control" v-model="payment.notes"/>
                     </td>
                 </tr>
                 <tr>
