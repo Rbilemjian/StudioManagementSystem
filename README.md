@@ -1,5 +1,4 @@
-
-NOTE REGARDING BACKEND/FRONTEND TESTS
+Note Regarding Frontend/Backend Tests
 -------------------------------------
 
 Dependency for frontend tests (laravel dusk) installed through composer (laravel’s package management system) fine on my local machine, but hung and never completed installation on my remote server. Therefore, the version of the app that is in the remote server is the “beforedusk” branch (Only difference is no frontend testing code or package included). The newest version of the “master” branch in the repository has all of the frontend tests, and the code can be seen there. Tests unfortunately cannot be run in the production environment, but I have included some videos of execution of the tests on my local machine:
