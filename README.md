@@ -24,11 +24,11 @@ Deployment Script
 
 	sed -i -e 's/\r$//' install.bash
 
-The script can then be executed from the root directory by executing the command:
+-The script can then be executed from the root directory by executing the command:
 
 	/bin/install.bash
 
-Video of deployment script being executed on a droplet through ssh and deploying site with no prior modification to the VM other than the steps before execution mentioned above:
+-Video of deployment script being executed on a droplet through ssh and deploying site with no prior modification to the VM other than the steps before execution mentioned above:
 
 	https://www.youtube.com/watch?v=RMEHeFFM61U&feature=youtu.be
 
@@ -36,10 +36,10 @@ Video of deployment script being executed on a droplet through ssh and deploying
 
 Unit Tests
 
-Can be found in the directory "tests/Unit"
+-Can be found in the directory "tests/Unit"
 
 
-Controller Tests contained in PHP files:
+-Controller Tests contained in PHP files:
 
 	AuthControllerTest.php
 
@@ -48,7 +48,7 @@ Controller Tests contained in PHP files:
     PaymentControllerTest.php
 
 
-Service Tests contained in PHP files:
+-Service Tests contained in PHP files:
 
 	CommentServiceTest.php
 
@@ -58,6 +58,6 @@ Service Tests contained in PHP files:
 
 Front-end Tests
 
-Can be found in the directory "tests/Browser" in PHP file:
+-Can be found in the directory "tests/Browser" in PHP file:
 
 	FrontEndTest.php
