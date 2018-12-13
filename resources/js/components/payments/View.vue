@@ -3,7 +3,7 @@
     <div class="payment-view">
         <div class="row">
             <div class="col-md-12" style="text-align:right; display:inline-block; margin-bottom:10px;">
-                <button class="btn btn-danger btn-sm" v-on:click="deletePayment()">Delete Payment
+                <button class="btn btn-danger btn-sm" id="delete-payment" v-on:click="deletePayment()">Delete Payment
                     <span class="fa fa-trash" style="margin-left:7px;" aria-hidden = "true"></span>
                 </button>
             </div>
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="col-md-2 text-right">
                                     <div v-if='comment.user == currentUser.name'>
-                                        <button class="btn btn-sm btn-danger" v-on:click="deleteComment(comment)">
+                                        <button id="delete-comment" class="btn btn-sm btn-danger" v-on:click="deleteComment(comment)">
                                             <span class="fa fa-trash" aria-hidden = "true"></span>
                                         </button>
                                     </div>

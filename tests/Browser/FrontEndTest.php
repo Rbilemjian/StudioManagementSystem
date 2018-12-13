@@ -65,6 +65,27 @@ class FrontEndTest extends DuskTestCase
         });
     }
 
+    public function testNewPayment()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/payments')
+                    ->waitForLink('New Payment')
+                    ->assertSee('New Payment')
+                    ->clickLink('New Payment')
+                    ->waitForLink('Cancel')
+                    ->assertSee('Cancel')
+                    ->type('#payed-by', 'Frontend Test')
+                    ->type('#payed-to', 'Jimmy')
+                    ->type('#amount', '200')
+                    ->type('#notes', 'test notes')
+                    ->press('input[type="submit"]')
+                    ->waitForLink('New Payment')
+                    ->assertSee('New Payment')
+                    ->waitForText('Frontend Test')
+                    ->assertSee('Frontend Test');
+        });
+    }
+
     public function testViewPayment()
     {
         $this->browse(function (Browser $browser) {
@@ -93,24 +114,32 @@ class FrontEndTest extends DuskTestCase
         });
     }
 
-    public function testNewPayment()
+    public function testDeleteComment()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/payments')
-                    ->waitForLink('New Payment')
-                    ->assertSee('New Payment')
-                    ->clickLink('New Payment')
-                    ->waitForLink('Cancel')
-                    ->assertSee('Cancel')
-                    ->type('#payed-by', 'Frontend Test')
-                    ->type('#payed-to', 'Jimmy')
-                    ->type('#amount', '200')
-                    ->type('#notes', 'test notes')
-                    ->press('input[type="submit"]')
-                    ->waitForLink('New Payment')
-                    ->assertSee('New Payment')
-                    ->waitForText('Frontend Test')
-                    ->assertSee('Frontend Test');
+                    ->waitForLink('View')
+                    ->assertSee('View')
+                    ->clickLink('View')
+                    ->waitForText('Test right here, ladies and gentlemen')
+                    ->press('button#delete-comment')
+                    ->assertDontSee('Test right here, ladies and gentlemen');
+        });
+    }
+
+    public function testDeletePayment()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/payments')
+                    ->waitForLink('View')
+                    ->assertSee('View')
+                    ->clickLink('View')
+                    ->waitForText('Comments')
+                    ->waitForText('Delete Payment')
+                    ->assertSee('Delete Payment')
+                    ->press('Delete Payment')
+                    ->waitForText('New Payment')
+                    ->assertDontSee('Frontend Test');
         });
     }
 
