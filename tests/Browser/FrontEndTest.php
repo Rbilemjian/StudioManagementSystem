@@ -65,7 +65,7 @@ class FrontEndTest extends DuskTestCase
         });
     }
 
-    public function testViewPaymentAndAddComment()
+    public function testViewPayment()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/payments')
@@ -74,6 +74,22 @@ class FrontEndTest extends DuskTestCase
                     ->clickLink('View')
                     ->waitForText('Comments')
                     ->assertSee('Comments');
+        });
+    }
+
+    public function testNewComment()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/payments')
+                    ->waitForLink('View')
+                    ->assertSee('View')
+                    ->clickLink('View')
+                    ->waitForText('Comments')
+                    ->assertSee('Comments')
+                    ->type('#comment-input', 'Test right here, ladies and gentlemen')
+                    ->press('input[type="submit"]')
+                    ->waitForText('Test right here, ladies and gentlemen')
+                    ->assertSee('Test right here, ladies and gentlemen');
         });
     }
 
